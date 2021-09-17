@@ -65,4 +65,5 @@
     <string name="delete_service">Delete Service</string>
     <string name="start_service">Start Service</string>
     <string name="opening_hours">Opening hours: 10.00a.m - 5.00p.m daily</string>
+    <string name="facilities">Facilities</string>
 </resources>

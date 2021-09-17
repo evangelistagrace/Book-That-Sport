@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (userId > -1) { // user record found, so login
                     Toast.makeText(LoginActivity.this, "Logged in", Toast.LENGTH_SHORT).show();
-                    Intent testIntent = new Intent(LoginActivity.this, TestActivity.class);
+                    Intent testIntent = new Intent(LoginActivity.this, FacilitiesActivity.class);
 //                    adminIntent.putExtra("USERNAME", username);
 //                    adminIntent.putExtra("PASSWORD", password);
 //                    adminIntent.putExtra("ID", userId);

@@ -2,17 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_home"
+        android:id="@+id/action_facilities"
         android:enabled="true"
-        android:icon="@drawable/ic_home"
-        android:title="Home"
-        app:showAsAction="ifRoom"
-        />
+        android:icon="@drawable/ic_sport"
+        android:title="Facilities"
+        app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_tickets"
+        android:id="@+id/action_bookings"
         android:enabled="true"
-        android:icon="@drawable/ic_insight"
-        android:title="Insight"
+        android:icon="@drawable/ic_calendar"
+        android:title="Bookings"
         app:showAsAction="ifRoom"
         />
     <item
