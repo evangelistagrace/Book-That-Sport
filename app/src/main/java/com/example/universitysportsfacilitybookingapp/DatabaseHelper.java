@@ -17,7 +17,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_EMAIL = "EMAIL";
     public static final String COL_USERNAME = "USERNAME";
     public static final String COL_PASSWORD = "PASSWORD";
-    public static final String COL_REQUESTS = "REQUESTS";
+
+    //FACILITIES
+    private static final String FACILITIES = "facilities";
+    public static final String COL_NAME = "name";
+    public static final String COL_ADDRESS = "address";
+    public static final String COL_OPENING_HOURS = "opening_hours";
+    public static final String COL_MAX_PAX = "max_pax";
+    public static final String COL_CONTACT = "contact";
+
+    //BOOKINGS
+    private static final String BOOKINGS = "bookings";
+    public static final String COL_USER_ID = "user_id";
+    public static final String COL_FACILITY_ID = "facility_id";
+    public static final String COL_DATE = "date";
+    public static final String COL_TIME = "time";
+    public static final String COL_PAX = "pax";
+    public static final String COL_STATUS = "status";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DB, null, 1);
@@ -25,13 +41,41 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // create tables here
+        // create tables
+        //users
         db.execSQL("CREATE TABLE " + REGISTERED_USERS +
                 " (" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL_EMAIL + " TEXT, " +
                 COL_USERNAME + " TEXT, " +
                 COL_PASSWORD + " TEXT " +
                 ")");
+
+        //facilities
+        db.execSQL("CREATE TABLE " + FACILITIES +
+                " (" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COL_NAME + " TEXT, " +
+                COL_ADDRESS + " TEXT, " +
+                COL_OPENING_HOURS + " TEXT, " +
+                COL_MAX_PAX + " TEXT, " +
+                COL_CONTACT + " TEXT " +
+                ")");
+
+        //bookings
+        db.execSQL("CREATE TABLE " + BOOKINGS +
+                " (" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COL_USER_ID + " INTEGER, " +
+                COL_FACILITY_ID + " INTEGER, " +
+                COL_DATE + " TEXT, " +
+                COL_TIME + " TEXT, " +
+                COL_PAX + " TEXT, " +
+                COL_STATUS + " TEXT " +
+                ")");
+
+        // insert into tables
+        db.execSQL("INSERT INTO " + FACILITIES + "( " +
+                COL_NAME + ", " + COL_ADDRESS + ", " + COL_OPENING_HOURS + ", " +
+                COL_MAX_PAX + ", " + COL_CONTACT +
+                ") VALUES ('Badminton', 'B-G-2', '10.00AM-10.00PM', '4', '+60189686773')");
     }
 
     @Override
@@ -85,7 +129,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public Cursor getUsers () {
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns = { COL_ID, COL_USERNAME, COL_REQUESTS };
+        String[] columns = { COL_ID, COL_USERNAME};
 
         Cursor cursor = db.query(REGISTERED_USERS, columns, null, null, null, null, null);
         if (cursor != null) {
