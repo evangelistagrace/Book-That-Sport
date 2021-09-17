@@ -62,6 +62,7 @@ public class BadmintonFragment extends Fragment {
     Intent currentIntent;
     Facility badminton;
     TextView facilityTitle;
+    TextView facilityAddress;
 
 
     @Override
@@ -74,9 +75,11 @@ public class BadmintonFragment extends Fragment {
         currentIntent = getActivity().getIntent();
         badminton = (Facility) currentIntent.getSerializableExtra("badmintonObject");
         facilityTitle = (TextView) view.findViewById(R.id.facilityTitle);
+        facilityAddress = (TextView) view.findViewById(R.id.facilityAddress);
 
         // set information
         facilityTitle.setText(badminton.getFacilityName());
+        facilityAddress.setText(badminton.getFacilityAddress());
 
 
         return view;

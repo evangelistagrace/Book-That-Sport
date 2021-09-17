@@ -12,22 +12,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DB = "sfb.db";
 
     //USERS
-    public static final String REGISTERED_USERS = "users";
+    public static final String TABLE_USERS = "users";
     public static final String COL_ID = "ID";
     public static final String COL_EMAIL = "EMAIL";
     public static final String COL_USERNAME = "USERNAME";
     public static final String COL_PASSWORD = "PASSWORD";
 
-    //FACILITIES
-    private static final String FACILITIES = "facilities";
+    //TABLE_FACILITIES
+    private static final String TABLE_FACILITIES = "facilities";
     public static final String COL_NAME = "name";
     public static final String COL_ADDRESS = "address";
     public static final String COL_OPENING_HOURS = "opening_hours";
     public static final String COL_MAX_PAX = "max_pax";
     public static final String COL_CONTACT = "contact";
 
-    //BOOKINGS
-    private static final String BOOKINGS = "bookings";
+    //TABLE_BOOKINGS
+    private static final String TABLE_BOOKINGS = "bookings";
     public static final String COL_USER_ID = "user_id";
     public static final String COL_FACILITY_ID = "facility_id";
     public static final String COL_DATE = "date";
@@ -43,7 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         // create tables
         //users
-        db.execSQL("CREATE TABLE " + REGISTERED_USERS +
+        db.execSQL("CREATE TABLE " + TABLE_USERS +
                 " (" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL_EMAIL + " TEXT, " +
                 COL_USERNAME + " TEXT, " +
@@ -51,7 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ")");
 
         //facilities
-        db.execSQL("CREATE TABLE " + FACILITIES +
+        db.execSQL("CREATE TABLE " + TABLE_FACILITIES +
                 " (" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL_NAME + " TEXT, " +
                 COL_ADDRESS + " TEXT, " +
@@ -61,7 +61,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ")");
 
         //bookings
-        db.execSQL("CREATE TABLE " + BOOKINGS +
+        db.execSQL("CREATE TABLE " + TABLE_BOOKINGS +
                 " (" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL_USER_ID + " INTEGER, " +
                 COL_FACILITY_ID + " INTEGER, " +
@@ -72,7 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ")");
 
         // insert into tables
-        db.execSQL("INSERT INTO " + FACILITIES + "( " +
+        db.execSQL("INSERT INTO " + TABLE_FACILITIES + "( " +
                 COL_NAME + ", " + COL_ADDRESS + ", " + COL_OPENING_HOURS + ", " +
                 COL_MAX_PAX + ", " + COL_CONTACT +
                 ") VALUES ('Badminton', 'B-G-2', '10.00AM-10.00PM', '4', '+60189686773')");
@@ -80,7 +80,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + REGISTERED_USERS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
         onCreate(db);
     }
 
@@ -91,7 +91,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put("email", email);
         cv.put("username", username);
         cv.put("password", password);
-        long res = db.insert(REGISTERED_USERS, null, cv);
+        long res = db.insert(TABLE_USERS, null, cv);
         db.close();
         return res;
     }
@@ -102,7 +102,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String selection = COL_USERNAME + "=?" + " and " + COL_PASSWORD + "=?";
         String[] selectionArgs = { username, password};
         //SELECT {columns} FROM {table} WHERE {selection - insert ? for placholders} = {selectionargs - replaces placeholders in selection}
-        Cursor cursor = db.rawQuery("SELECT " + COL_ID + " FROM " + REGISTERED_USERS + " WHERE " + selection, selectionArgs);
+        Cursor cursor = db.rawQuery("SELECT " + COL_ID + " FROM " + TABLE_USERS + " WHERE " + selection, selectionArgs);
 
         while (cursor.moveToNext()) {
             userId = cursor.getInt(0);
@@ -122,7 +122,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         cv.put("password", newPassword);
 
-        long res = db.update(REGISTERED_USERS, cv, selection, selectionArgs);
+        long res = db.update(TABLE_USERS, cv, selection, selectionArgs);
         db.close();
         return res;
     }
@@ -131,11 +131,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = { COL_ID, COL_USERNAME};
 
-        Cursor cursor = db.query(REGISTERED_USERS, columns, null, null, null, null, null);
+        Cursor cursor = db.query(TABLE_USERS, columns, null, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
         }
         return cursor;
     }
 
+    // facility
+    public Cursor getFacility(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = { COL_ID, COL_NAME, COL_ADDRESS, COL_OPENING_HOURS, COL_MAX_PAX, COL_CONTACT };
+        String selection = COL_ID + "=" + id;
+
+        Cursor cursor = db.query(TABLE_FACILITIES, columns, selection, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+
+    }
 }

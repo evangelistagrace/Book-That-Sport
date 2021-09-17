@@ -2,6 +2,7 @@ package com.example.universitysportsfacilitybookingapp;
 
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,13 +40,18 @@ public class FacilitiesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create badminton object
-//                Facility badminton = new Facility(name, address, opening_hours, contact);
-                Facility badminton = new Facility(1, "Badminton");
+                Cursor cursor = db.getFacility(1);
 
-                currentIntent.putExtra("badmintonObject", badminton);
-                // Fragment 1
-                Fragment fragment = new BadmintonFragment();
-                loadFragment(fragment);
+                if (cursor.moveToFirst()) {
+                    Facility badminton = new Facility(1, cursor.getString(1),
+                            cursor.getString(2), cursor.getString(3),
+                            cursor.getInt(4), cursor.getString(5));
+
+                    currentIntent.putExtra("badmintonObject", badminton);
+                    // Fragment 1
+                    Fragment fragment = new BadmintonFragment();
+                    loadFragment(fragment);
+                }
             }
         });
 
