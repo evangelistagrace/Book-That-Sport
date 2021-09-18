@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -95,6 +96,11 @@ public class FacilityFragment extends Fragment {
         });
 
         // set information
+        ViewPager viewPager = view.findViewById(R.id.image_gallery);
+        ImageAdapter adapter = new ImageAdapter(getActivity());
+        viewPager.setAdapter(adapter);
+
+
         facilityTitle.setText(facility.getFacilityName());
         facilityAddress.setText(facility.getFacilityAddress());
         facilityOpeningHours.setText(facility.getFacilityOpeningHours());
