@@ -31,5 +31,14 @@ public class Facility implements Serializable {
     public String getFacilityAddress() {
         return this.address;
     }
+    public String getFacilityOpeningHours() {
+        return this.opening_hours;
+    }
+    public String getFacilityMaxPax() {
+        return String.valueOf(this.max_pax);
+    }
+    public String getFacilityContact() {
+        return this.contact;
+    }
 
 }

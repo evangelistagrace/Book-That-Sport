@@ -32,16 +32,71 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/facilityAddress"
-        android:layout_width="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="281dp"
-        android:layout_marginRight="281dp"
-        android:text="@string/hello_blank_fragment"
+        android:background="@drawable/input_field_rounded_corner"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
+        app:layout_constraintTop_toBottomOf="@id/my_toolbar">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:stretchColumns="1">
+
+            <!-- scroll contents/ facility details-->
+            <TextView
+                android:id="@+id/facilityAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_location_dark"
+                android:drawableLeft="@drawable/ic_location_dark"
+                android:drawablePadding="5dip"
+                android:text="@string/hello_blank_fragment"
+                android:textColor="@color/magenta" />
+
+            <TextView
+                android:id="@+id/facilityOpeningHours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_time_dark"
+                android:drawableLeft="@drawable/ic_time_dark"
+                android:drawablePadding="5dip"
+                android:text="@string/hello_blank_fragment"
+                android:textColor="@color/magenta"
+                app:layout_constraintTop_toBottomOf="@id/facilityAddress" />
+
+            <TextView
+                android:id="@+id/facilityMaxPax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_pax_dark"
+                android:drawableLeft="@drawable/ic_pax_dark"
+                android:drawablePadding="5dip"
+                android:text="@string/hello_blank_fragment"
+                android:textColor="@color/magenta"
+                app:layout_constraintTop_toBottomOf="@id/facilityOpeningHours" />
+
+            <TextView
+                android:id="@+id/facilityContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/ic_phone_dark"
+                android:drawableLeft="@drawable/ic_phone_dark"
+                android:drawablePadding="5dip"
+                android:text="@string/hello_blank_fragment"
+                android:textColor="@color/magenta"
+                app:layout_constraintTop_toBottomOf="@id/facilityMaxPax" />
+
+        </TableLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

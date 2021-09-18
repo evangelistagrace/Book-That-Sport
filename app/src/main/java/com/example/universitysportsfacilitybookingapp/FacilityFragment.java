@@ -64,6 +64,9 @@ public class FacilityFragment extends Fragment {
     Facility facility;
     TextView facilityTitle;
     TextView facilityAddress;
+    TextView facilityOpeningHours;
+    TextView facilityMaxPax;
+    TextView facilityContact;
 
 
     @Override
@@ -77,6 +80,9 @@ public class FacilityFragment extends Fragment {
         facility = (Facility) currentIntent.getSerializableExtra("facilityObject");
         facilityTitle = (TextView) view.findViewById(R.id.facilityTitle);
         facilityAddress = (TextView) view.findViewById(R.id.facilityAddress);
+        facilityOpeningHours = (TextView) view.findViewById(R.id.facilityOpeningHours);
+        facilityMaxPax = (TextView) view.findViewById(R.id.facilityMaxPax);
+        facilityContact = (TextView) view.findViewById(R.id.facilityContact);
 
         // set toolbar
         Toolbar toolbar = view.findViewById(R.id.my_toolbar);
@@ -91,6 +97,9 @@ public class FacilityFragment extends Fragment {
         // set information
         facilityTitle.setText(facility.getFacilityName());
         facilityAddress.setText(facility.getFacilityAddress());
+        facilityOpeningHours.setText(facility.getFacilityOpeningHours());
+        facilityMaxPax.setText(facility.getFacilityMaxPax() + " Pax");
+        facilityContact.setText(facility.getFacilityContact());
 
         return view;
     }
