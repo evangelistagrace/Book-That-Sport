@@ -3,6 +3,7 @@ package com.example.universitysportsfacilitybookingapp;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -76,6 +77,16 @@ public class FacilityFragment extends Fragment {
         facility = (Facility) currentIntent.getSerializableExtra("facilityObject");
         facilityTitle = (TextView) view.findViewById(R.id.facilityTitle);
         facilityAddress = (TextView) view.findViewById(R.id.facilityAddress);
+
+        // set toolbar
+        Toolbar toolbar = view.findViewById(R.id.my_toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
 
         // set information
         facilityTitle.setText(facility.getFacilityName());

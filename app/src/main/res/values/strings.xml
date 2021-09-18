@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Queue Management System</string>
+    <string name="app_name">Book That Sport</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
     <string name="title_activity_login">LoginActivity</string>
@@ -14,56 +14,15 @@
     <string name="not_registered_yet">Not registered yet?</string>
     <string name="register_now">Register</string>
     <string name="already_registered">Already registered?</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="cust_home_text_1">I would like to request ticket for ...</string>
-    <string name="accounts">Accounts</string>
-    <string name="payments">Payments</string>
-    <string name="loans">Loans</string>
-    <string name="cust_ticket_text_1">Thank you for waiting. Your position in queue is:</string>
-    <string name="dummy_num">5</string>
-    <string name="cust_ticket_text_2">We\&apos;ll notify you once we\&apos;re ready to serve you.</string>
-    <string name="leave_queue">Leave queue</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="admin_panel">Admin Panel</string>
-    <string name="services">Services</string>
-    <string name="queues">Queues</string>
-    <string name="customers">Customers</string>
     <string name="profile">Profile</string>
-    <string name="insights">Insights</string>
     <string name="plus_symbol">+</string>
     <string name="running">Running</string>
-    <string name="stopped">Stopped</string>
-    <string name="add_service">Add Service</string>
-    <string name="num_of_counters">Number of Counters</string>
-    <string name="string_name">String Name</string>
-    <string name="service_name">Service Name</string>
-    <string name="opened_counters">Opened Counters:</string>
-    <string name="service_details">Service Name: %1$s <br />Number of Counters: %2$s</string>
-    <string name="service_queue_options">Service Queue Options</string>
-    <string name="request_ticket">Request Ticket</string>
-    <string name="view_queue">View Queue</string>
-    <string name="currently_serving">Currently Serving: </string>
-    <string name="ticket_number">Your Ticket Number:</string>
-    <string name="my_tickets">My Tickets</string>
-    <string name="sample_ticket_number">1011</string>
-    <string name="channel_name">QMS</string>
-    <string name="channel_description">a queue management app</string>
-    <string name="cancel">Cancel</string>
-    <string name="view">View</string>
-    <string name="my_profile">my_profile</string>
     <string name="my_profilee">My Profile</string>
-    <string name="tickets">Tickets</string>
     <string name="logout">Sign Out</string>
     <string name="prompt_old_password">Old Password</string>
     <string name="prompt_new_password">New Password</string>
     <string name="save_changes">Save Changes</string>
-    <string name="no_active_ticket">You have no active ticket(s) currently.</string>
     <string name="reset_password">Reset Password</string>
-    <string name="service">Service</string>
-    <string name="stop_service">Stop Service</string>
-    <string name="delete_service">Delete Service</string>
-    <string name="start_service">Start Service</string>
-    <string name="opening_hours">Opening hours: 10.00a.m - 5.00p.m daily</string>
     <string name="facilities">Facilities</string>
 </resources>
