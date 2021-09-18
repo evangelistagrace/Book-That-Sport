@@ -41,6 +41,7 @@
         app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
 
     <ScrollView
+        android:id="@+id/facilityDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_field_rounded_corner"
@@ -107,5 +108,19 @@
 
         </TableLayout>
     </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginBottom="70dp"
+        android:layout_marginRight="10dp"
+        android:contentDescription="button"
+        android:src="@drawable/ic_calendar"
+        app:backgroundTint="@color/mustard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

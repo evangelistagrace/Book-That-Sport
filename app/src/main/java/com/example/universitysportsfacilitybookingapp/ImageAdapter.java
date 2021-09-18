@@ -11,10 +11,11 @@ import androidx.viewpager.widget.PagerAdapter;
 
 public class ImageAdapter extends PagerAdapter {
     private Context mContext;
-    private int[] mImageIds = new int[]{R.drawable.badminton_1, R.drawable.badminton_2, R.drawable.badminton_3};
+    private int[] mImageIds;
 
-    ImageAdapter(Context context) {
+    ImageAdapter(Context context,  int[] mImageIds) {
         mContext = context;
+        this.mImageIds = mImageIds;
     }
 
     @Override

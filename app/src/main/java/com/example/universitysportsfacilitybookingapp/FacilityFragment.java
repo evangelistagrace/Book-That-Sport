@@ -97,7 +97,19 @@ public class FacilityFragment extends Fragment {
 
         // set information
         ViewPager viewPager = view.findViewById(R.id.image_gallery);
-        ImageAdapter adapter = new ImageAdapter(getActivity());
+        int[] mImageIds = new int[]{};
+
+        // set images for image gallery
+        switch (facility.getFacilityName()) {
+            case "Badminton":
+                mImageIds = new int[]{R.drawable.badminton_1, R.drawable.badminton_2, R.drawable.badminton_3};
+                break;
+            default:
+                break;
+        }
+
+
+        ImageAdapter adapter = new ImageAdapter(getActivity(), mImageIds);
         viewPager.setAdapter(adapter);
 
 
