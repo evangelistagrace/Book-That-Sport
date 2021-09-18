@@ -1,8 +1,11 @@
 package com.example.universitysportsfacilitybookingapp;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
@@ -10,7 +13,15 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.TextView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,7 +79,9 @@ public class FacilityFragment extends Fragment {
     TextView facilityOpeningHours;
     TextView facilityMaxPax;
     TextView facilityContact;
-
+    FloatingActionButton fab;
+    TextView facilityBookingDate;
+    final Calendar myCalendar = Calendar.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -85,6 +98,11 @@ public class FacilityFragment extends Fragment {
         facilityMaxPax = (TextView) view.findViewById(R.id.facilityMaxPax);
         facilityContact = (TextView) view.findViewById(R.id.facilityContact);
 
+        fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        facilityBookingDate = view.findViewById(R.id.facilityBooking);
+
+
+
         // set toolbar
         Toolbar toolbar = view.findViewById(R.id.my_toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
@@ -95,11 +113,10 @@ public class FacilityFragment extends Fragment {
             }
         });
 
-        // set information
+        // set images for image gallery
         ViewPager viewPager = view.findViewById(R.id.image_gallery);
         int[] mImageIds = new int[]{};
 
-        // set images for image gallery
         switch (facility.getFacilityName()) {
             case "Badminton":
                 mImageIds = new int[]{R.drawable.badminton_1, R.drawable.badminton_2, R.drawable.badminton_3};
@@ -108,17 +125,57 @@ public class FacilityFragment extends Fragment {
                 break;
         }
 
-
         ImageAdapter adapter = new ImageAdapter(getActivity(), mImageIds);
         viewPager.setAdapter(adapter);
 
-
+        // set facility details
         facilityTitle.setText(facility.getFacilityName());
         facilityAddress.setText(facility.getFacilityAddress());
         facilityOpeningHours.setText(facility.getFacilityOpeningHours());
         facilityMaxPax.setText(facility.getFacilityMaxPax() + " Pax");
         facilityContact.setText(facility.getFacilityContact());
 
+        // fab action
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+
+        };
+
+
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog dpd = new DatePickerDialog(getActivity(), date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH));
+
+                dpd.show();
+
+                dpd.getButton(DatePickerDialog.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.mustard));
+                dpd.getButton(DatePickerDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.mustard));
+
+
+            }
+        });
+
         return view;
+    }
+
+    private void updateLabel() {
+        String myFormat = "dd/MM/yyyy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.UK);
+
+        facilityBookingDate.setText(sdf.format(myCalendar.getTime()));
     }
 }

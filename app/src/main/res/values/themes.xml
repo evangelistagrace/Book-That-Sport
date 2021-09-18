@@ -9,6 +9,20 @@
         <item name="colorOnSecondary">@color/white</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/magenta</item>
+
+        <item name="android:datePickerDialogTheme">@style/MyDatePickerDialogTheme</item>
+
+
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="MyDatePickerDialogTheme" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="colorAccent">@color/mustard</item>
+        <item name="android:colorAccent">@color/mustard</item>
+        <item name="android:calendarTextColor">@color/mustard</item>
+
+        <item name="android:colorPrimary">@color/mustard</item>
+    </style>
+
+
 </resources>
