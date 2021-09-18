@@ -12,10 +12,10 @@ import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BadmintonFragment#newInstance} factory method to
+ * Use the {@link FacilityFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BadmintonFragment extends Fragment {
+public class FacilityFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class BadmintonFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public BadmintonFragment() {
+    public FacilityFragment() {
         // Required empty public constructor
     }
 
@@ -39,8 +39,8 @@ public class BadmintonFragment extends Fragment {
      * @return A new instance of fragment BadmintonFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BadmintonFragment newInstance(String param1, String param2) {
-        BadmintonFragment fragment = new BadmintonFragment();
+    public static FacilityFragment newInstance(String param1, String param2) {
+        FacilityFragment fragment = new FacilityFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -60,7 +60,7 @@ public class BadmintonFragment extends Fragment {
     // variables
     View view;
     Intent currentIntent;
-    Facility badminton;
+    Facility facility;
     TextView facilityTitle;
     TextView facilityAddress;
 
@@ -69,18 +69,17 @@ public class BadmintonFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_badminton, container, false);
+        view = inflater.inflate(R.layout.fragment_facility, container, false);
 
         // init
         currentIntent = getActivity().getIntent();
-        badminton = (Facility) currentIntent.getSerializableExtra("badmintonObject");
+        facility = (Facility) currentIntent.getSerializableExtra("facilityObject");
         facilityTitle = (TextView) view.findViewById(R.id.facilityTitle);
         facilityAddress = (TextView) view.findViewById(R.id.facilityAddress);
 
         // set information
-        facilityTitle.setText(badminton.getFacilityName());
-        facilityAddress.setText(badminton.getFacilityAddress());
-
+        facilityTitle.setText(facility.getFacilityName());
+        facilityAddress.setText(facility.getFacilityAddress());
 
         return view;
     }

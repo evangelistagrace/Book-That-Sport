@@ -43,13 +43,13 @@ public class FacilitiesActivity extends AppCompatActivity {
                 Cursor cursor = db.getFacility(1);
 
                 if (cursor.moveToFirst()) {
-                    Facility badminton = new Facility(1, cursor.getString(1),
+                    Facility facility = new Facility(1, cursor.getString(1),
                             cursor.getString(2), cursor.getString(3),
                             cursor.getInt(4), cursor.getString(5));
 
-                    currentIntent.putExtra("badmintonObject", badminton);
+                    currentIntent.putExtra("facilityObject", facility);
                     // Fragment 1
-                    Fragment fragment = new BadmintonFragment();
+                    Fragment fragment = new FacilityFragment();
                     loadFragment(fragment);
                 }
             }
