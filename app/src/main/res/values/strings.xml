@@ -25,4 +25,13 @@
     <string name="save_changes">Save Changes</string>
     <string name="reset_password">Reset Password</string>
     <string name="facilities">Facilities</string>
+    <string name="pickaSlot">Pick a Slot</string>
+    <string name="slot1">10AM - 11AM</string>
+    <string name="slot2">11AM - 12PM</string>
+    <string name="slot3">12PM - 1PM</string>
+    <string name="slot4">2PM - 3PM</string>
+    <string name="slot5">3PM - 4PM</string>
+    <string name="slot6">4PM - 5PM</string>
+    <string name="slot7">5PM - 6PM</string>
+    <string name="slot8">6PM - 7PM</string>
 </resources>

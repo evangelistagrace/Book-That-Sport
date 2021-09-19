@@ -2,20 +2,19 @@ package com.example.universitysportsfacilitybookingapp;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -74,7 +73,7 @@ public class FacilityFragment extends Fragment {
     View view;
     Intent currentIntent;
     Facility facility;
-    TextView facilityTitle;
+    TextView fragmentTitle;
     TextView facilityAddress;
     TextView facilityOpeningHours;
     TextView facilityMaxPax;
@@ -92,15 +91,12 @@ public class FacilityFragment extends Fragment {
         // init
         currentIntent = getActivity().getIntent();
         facility = (Facility) currentIntent.getSerializableExtra("facilityObject");
-        facilityTitle = (TextView) view.findViewById(R.id.facilityTitle);
+        fragmentTitle = (TextView) view.findViewById(R.id.fragmentTitle);
         facilityAddress = (TextView) view.findViewById(R.id.facilityAddress);
         facilityOpeningHours = (TextView) view.findViewById(R.id.facilityOpeningHours);
         facilityMaxPax = (TextView) view.findViewById(R.id.facilityMaxPax);
         facilityContact = (TextView) view.findViewById(R.id.facilityContact);
-
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
-        facilityBookingDate = view.findViewById(R.id.facilityBooking);
-
 
 
         // set toolbar
@@ -129,7 +125,7 @@ public class FacilityFragment extends Fragment {
         viewPager.setAdapter(adapter);
 
         // set facility details
-        facilityTitle.setText(facility.getFacilityName());
+        fragmentTitle.setText(facility.getFacilityName());
         facilityAddress.setText(facility.getFacilityAddress());
         facilityOpeningHours.setText(facility.getFacilityOpeningHours());
         facilityMaxPax.setText(facility.getFacilityMaxPax() + " Pax");
@@ -145,12 +141,11 @@ public class FacilityFragment extends Fragment {
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateLabel();
+                //popup new fragment and pass selected date to new fragment
+                popBookingFragment();
             }
 
         };
-
-
 
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -172,10 +167,25 @@ public class FacilityFragment extends Fragment {
         return view;
     }
 
-    private void updateLabel() {
-        String myFormat = "dd/MM/yyyy"; //In which you need put here
+    private void popBookingFragment() {
+        String myFormat = "dd/MM/YYYY";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.UK);
 
-        facilityBookingDate.setText(sdf.format(myCalendar.getTime()));
+        // pass booking information to next fragment
+        currentIntent.putExtra("facilityObject", facility);
+        currentIntent.putExtra("selectedDate", sdf.format(myCalendar.getTime()));
+
+        Fragment fragment = new BookingFragment();
+        loadFragment(fragment);
+    }
+
+    private void loadFragment(Fragment fragment) {
+        // load fragment
+        androidx.fragment.app.FragmentManager fm = getActivity().getSupportFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.setReorderingAllowed(true);
+        transaction.commit();
     }
 }
