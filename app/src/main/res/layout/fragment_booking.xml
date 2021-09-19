@@ -39,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:drawablePadding="5dip"
         android:text="@string/pickaSlot"
         android:textColor="@color/magenta"
@@ -53,8 +53,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_field_rounded_corner"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,11 +114,326 @@
                     android:textColor="@color/material_on_surface_emphasis_medium"
                     android:textSize="12sp" />
 
-
+            </TableRow>
+            <TableRow>
+                <CheckBox
+                    android:id="@+id/slot5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableTop="@drawable/checkbox"
+                    android:text="@string/slot5"
+                    android:textAlignment="center"
+                    android:textColor="@color/material_on_surface_emphasis_medium"
+                    android:textSize="12sp" />
+                <CheckBox
+                    android:id="@+id/slot6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableTop="@drawable/checkbox"
+                    android:text="@string/slot6"
+                    android:textAlignment="center"
+                    android:textColor="@color/material_on_surface_emphasis_medium"
+                    android:textSize="12sp" />
+                <CheckBox
+                    android:id="@+id/slot7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableTop="@drawable/checkbox"
+                    android:text="@string/slot7"
+                    android:textAlignment="center"
+                    android:textColor="@color/material_on_surface_emphasis_medium"
+                    android:textSize="12sp" />
+                <CheckBox
+                    android:id="@+id/slot8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableTop="@drawable/checkbox"
+                    android:text="@string/slot8"
+                    android:textAlignment="center"
+                    android:textColor="@color/material_on_surface_emphasis_medium"
+                    android:textSize="12sp" />
+            </TableRow>
+            <TableRow>
+                <CheckBox
+                    android:id="@+id/slot9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableTop="@drawable/checkbox"
+                    android:text="@string/slot9"
+                    android:textAlignment="center"
+                    android:textColor="@color/material_on_surface_emphasis_medium"
+                    android:textSize="12sp" />
+                <CheckBox
+                    android:id="@+id/slot10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableTop="@drawable/checkbox"
+                    android:text="@string/slot10"
+                    android:textAlignment="center"
+                    android:textColor="@color/material_on_surface_emphasis_medium"
+                    android:textSize="12sp" />
+                <CheckBox
+                    android:id="@+id/slot11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableTop="@drawable/checkbox"
+                    android:text="@string/slot11"
+                    android:textAlignment="center"
+                    android:textColor="@color/material_on_surface_emphasis_medium"
+                    android:textSize="12sp" />
+                <CheckBox
+                    android:id="@+id/slot12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableTop="@drawable/checkbox"
+                    android:text="@string/slot12"
+                    android:textAlignment="center"
+                    android:textColor="@color/material_on_surface_emphasis_medium"
+                    android:textSize="12sp" />
             </TableRow>
 
         </TableLayout>
     </ScrollView>
 
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:drawablePadding="5dip"
+        android:text="@string/bookingDetails"
+        android:textColor="@color/magenta"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/slotAvailability" />
 
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        app:layout_constraintTop_toBottomOf="@+id/title2">
+
+        <!-- scroll contents/ booking slots-->
+        <TableRow android:layout_width="0dp">
+            <LinearLayout
+                android:id="@+id/student_id"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                android:layout_span="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                >
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/student_id_ti"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_field_rounded_corner"
+                    app:boxBackgroundMode="filled"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_student_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/kollektif"
+                        android:hint="@string/student_id"
+                        android:inputType="text"
+                        android:paddingTop="17dp"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+        </TableRow>
+        <TableRow android:layout_width="0dp">
+            <LinearLayout
+                android:id="@+id/venue"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                android:layout_span="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/venue_ti"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_field_rounded_corner"
+                    app:boxBackgroundMode="filled"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_venue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/kollektif"
+                        android:hint="@string/venue"
+                        android:inputType="text"
+                        android:paddingTop="17dp"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </TableRow>
+        <TableRow android:layout_width="0dp">
+            <LinearLayout
+                android:id="@+id/date"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/date_ti"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_field_rounded_corner"
+                    app:boxBackgroundMode="filled"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/kollektif"
+                        android:hint="@string/date"
+                        android:inputType="text"
+                        android:paddingTop="17dp"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/time"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/time_ti"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_field_rounded_corner"
+                    app:boxBackgroundMode="filled"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/kollektif"
+                        android:hint="@string/time"
+                        android:inputType="text"
+                        android:paddingTop="17dp"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </TableRow>
+        <TableRow android:layout_width="0dp">
+            <LinearLayout
+                android:id="@+id/pax"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="horizontal"
+                android:layout_span="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/pax_ti"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/input_field_rounded_corner"
+                    app:boxBackgroundMode="filled"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/et_pax"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:fontFamily="@font/kollektif"
+                        android:hint="@string/pax"
+                        android:inputType="number"
+                        android:paddingTop="17dp"
+                        android:paddingBottom="5dp"
+                        android:textSize="14sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </TableRow>
+        <TableRow android:layout_width="0dp">
+            <Button
+                android:id="@+id/btnAddService"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_span="2"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="@string/bookNow"
+                android:textSize="16sp"
+                app:cornerRadius="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:context=".AdminServicesActivity" />
+        </TableRow>
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

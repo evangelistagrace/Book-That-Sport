@@ -29,9 +29,21 @@
     <string name="slot1">10AM - 11AM</string>
     <string name="slot2">11AM - 12PM</string>
     <string name="slot3">12PM - 1PM</string>
-    <string name="slot4">2PM - 3PM</string>
-    <string name="slot5">3PM - 4PM</string>
-    <string name="slot6">4PM - 5PM</string>
-    <string name="slot7">5PM - 6PM</string>
-    <string name="slot8">6PM - 7PM</string>
+    <string name="slot4">1PM - 2PM</string>
+    <string name="slot5">2PM - 3PM</string>
+    <string name="slot6">3PM - 4PM</string>
+    <string name="slot7">4PM - 5PM</string>
+    <string name="slot8">5PM - 6PM</string>
+    <string name="slot9">6PM - 7PM</string>
+    <string name="slot10">7PM - 8PM</string>
+    <string name="slot11">8PM - 9PM</string>
+    <string name="slot12">9PM - 10PM</string>
+    <string name="bookingDetails">Booking Details</string>
+    <string name="bookerName">Full Name</string>
+    <string name="venue">Venue</string>
+    <string name="bookNow">Book Now</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="pax">Number of Pax</string>
+    <string name="student_id">Student ID</string>
 </resources>
