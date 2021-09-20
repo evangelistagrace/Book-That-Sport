@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -100,7 +101,15 @@ public class BookingFragment extends Fragment {
         CheckBox slot1 = (CheckBox) view.findViewById(R.id.slot1);
         CheckBox slot2 = (CheckBox) view.findViewById(R.id.slot2);
         CheckBox slot3 = (CheckBox) view.findViewById(R.id.slot3);
-        CheckBox slot4 = (CheckBox) view.findViewById(R.id.slot4);;
+        CheckBox slot4 = (CheckBox) view.findViewById(R.id.slot4);
+        CheckBox slot5 = (CheckBox) view.findViewById(R.id.slot5);
+        CheckBox slot6 = (CheckBox) view.findViewById(R.id.slot6);
+        CheckBox slot7 = (CheckBox) view.findViewById(R.id.slot7);
+        CheckBox slot8 = (CheckBox) view.findViewById(R.id.slot8);
+        CheckBox slot9 = (CheckBox) view.findViewById(R.id.slot9);
+        CheckBox slot10 = (CheckBox) view.findViewById(R.id.slot10);
+        CheckBox slot11 = (CheckBox) view.findViewById(R.id.slot11);
+        CheckBox slot12 = (CheckBox) view.findViewById(R.id.slot12);
         username = (EditText) view.findViewById(R.id.et_student_id);
         venue = (EditText) view.findViewById(R.id.et_venue);
         date = (EditText) view.findViewById(R.id.et_date);
@@ -122,6 +131,14 @@ public class BookingFragment extends Fragment {
         checkBoxArr.add(slot2);
         checkBoxArr.add(slot3);
         checkBoxArr.add(slot4);
+        checkBoxArr.add(slot5);
+        checkBoxArr.add(slot6);
+        checkBoxArr.add(slot7);
+        checkBoxArr.add(slot8);
+        checkBoxArr.add(slot9);
+        checkBoxArr.add(slot10);
+        checkBoxArr.add(slot11);
+        checkBoxArr.add(slot12);
 
 
         //pre-set details
@@ -179,10 +196,18 @@ public class BookingFragment extends Fragment {
                 // remove trailing comma and whitespace
                 timeText = timeText.replaceAll(", $", "");
 
-                Toast.makeText(getActivity(), timeText, Toast.LENGTH_SHORT).show();
-
                 // save booking details
                 //to-do: convert pax value to string before saving to db
+                EditText et_pax = (EditText) view.findViewById(R.id.et_pax);
+                String pax = et_pax.getText().toString();
+
+                long val = db.addBooking(userID, facility.getId(), selectedDate, timeText, pax, "Booked");
+                if (val > 0) {
+                    Toast.makeText(getActivity(), "Booking successful", Toast.LENGTH_SHORT).show();
+                    Fragment fragment = new BookingsFragment();
+                    loadFragment(fragment);
+                }
+
             }
         });
 
@@ -193,5 +218,14 @@ public class BookingFragment extends Fragment {
     public static String getStringByIdName(Context context, String idName) {
         Resources res = context.getResources();
         return res.getString(res.getIdentifier(idName, "string", context.getPackageName()));
+    }
+
+    private void loadFragment(Fragment fragment) {
+        // load fragment
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.setReorderingAllowed(true);
+        transaction.commit();
     }
 }

@@ -207,4 +207,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
+
+    public long addBooking (int userID, int facilityID, String date, String time, String pax, String status) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("user_id", userID);
+        cv.put("facility_id", facilityID);
+        cv.put("date", date);
+        cv.put("time", time);
+        cv.put("pax", pax);
+        cv.put("status", status);
+        long res = db.insert(TABLE_BOOKINGS, null, cv);
+        db.close();
+        return res;
+    }
+
 }
