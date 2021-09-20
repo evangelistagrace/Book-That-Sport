@@ -148,11 +148,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    //  users
     public Cursor getUsers () {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = { COL_ID, COL_USERNAME};
 
         Cursor cursor = db.query(TABLE_USERS, columns, null, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
+    public Cursor getUser (int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = { COL_ID, COL_USERNAME, COL_PASSWORD};
+        String selection = COL_ID + "=" + id;
+
+        Cursor cursor = db.query(TABLE_USERS, columns, selection, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
         }
