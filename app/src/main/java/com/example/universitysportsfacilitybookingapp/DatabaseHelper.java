@@ -84,7 +84,27 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO " + TABLE_FACILITIES + "( " +
                 COL_NAME + ", " + COL_ADDRESS + ", " + COL_OPENING_HOURS + ", " +
                 COL_CONTACT +
-                ") VALUES ('Badminton', 'B-G-2', '10.00AM-10.00PM', '+60189686773')");
+                ") VALUES ('Badminton', 'B-G-2', '10.00AM-10.00PM', '+60329686773')");
+
+        db.execSQL("INSERT INTO " + TABLE_FACILITIES + "( " +
+                COL_NAME + ", " + COL_ADDRESS + ", " + COL_OPENING_HOURS + ", " +
+                COL_CONTACT +
+                ") VALUES ('Tennis', 'F-G-1', '10.00AM-10.00PM', '+60329686774')");
+
+        db.execSQL("INSERT INTO " + TABLE_FACILITIES + "( " +
+                COL_NAME + ", " + COL_ADDRESS + ", " + COL_OPENING_HOURS + ", " +
+                COL_CONTACT +
+                ") VALUES ('Basketball', 'B-G-3', '10.00AM-10.00PM', '+60329686775')");
+
+        db.execSQL("INSERT INTO " + TABLE_FACILITIES + "( " +
+                COL_NAME + ", " + COL_ADDRESS + ", " + COL_OPENING_HOURS + ", " +
+                COL_CONTACT +
+                ") VALUES ('Swimming', 'F-G-4', '10.00AM-10.00PM', '+60329686776')");
+
+        db.execSQL("INSERT INTO " + TABLE_FACILITIES + "( " +
+                COL_NAME + ", " + COL_ADDRESS + ", " + COL_OPENING_HOURS + ", " +
+                COL_CONTACT +
+                ") VALUES ('Futsal', 'MMU Football Court', '10.00AM-10.00PM', '+60329686777')");
 
         //bookings
         db.execSQL("INSERT INTO " + TABLE_BOOKINGS + "( " +

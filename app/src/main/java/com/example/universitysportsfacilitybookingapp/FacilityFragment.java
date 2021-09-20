@@ -114,6 +114,15 @@ public class FacilityFragment extends Fragment {
             case "Badminton":
                 mImageIds = new int[]{R.drawable.badminton_1, R.drawable.badminton_2, R.drawable.badminton_3};
                 break;
+            case "Tennis":
+                mImageIds = new int[]{R.drawable.tennis_1, R.drawable.tennis_2};
+                break;
+            case "Basketball":
+                mImageIds = new int[]{R.drawable.basketball_1};
+                break;
+            case "Swimming":
+                mImageIds = new int[]{R.drawable.swimming_1, R.drawable.swimming_2};
+                break;
             default:
                 break;
         }

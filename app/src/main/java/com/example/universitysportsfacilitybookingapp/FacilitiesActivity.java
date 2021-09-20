@@ -31,6 +31,9 @@ public class FacilitiesActivity extends AppCompatActivity {
 
         db = new DatabaseHelper(this);
         Button btnBadminton = findViewById(R.id.btnBadminton);
+        Button btnTennis = findViewById(R.id.btnTennis);
+        Button btnBasketball = findViewById(R.id.btnBasketball);
+        Button btnSwimming = findViewById(R.id.btnSwimming);
         Intent currentIntent = getIntent();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -44,6 +47,66 @@ public class FacilitiesActivity extends AppCompatActivity {
 
                 if (cursor.moveToFirst()) {
                     Facility facility = new Facility(1, cursor.getString(1),
+                            cursor.getString(2), cursor.getString(3),
+                            cursor.getString(4));
+
+                    currentIntent.putExtra("facilityObject", facility);
+                    // Fragment 1
+                    Fragment fragment = new FacilityFragment();
+                    loadFragment(fragment);
+                }
+            }
+        });
+
+        // handle clicks for facilities buttons
+        btnTennis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create badminton object
+                Cursor cursor = db.getFacility(2);
+
+                if (cursor.moveToFirst()) {
+                    Facility facility = new Facility(2, cursor.getString(1),
+                            cursor.getString(2), cursor.getString(3),
+                            cursor.getString(4));
+
+                    currentIntent.putExtra("facilityObject", facility);
+                    // Fragment 1
+                    Fragment fragment = new FacilityFragment();
+                    loadFragment(fragment);
+                }
+            }
+        });
+
+        // handle clicks for facilities buttons
+        btnBasketball.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create badminton object
+                Cursor cursor = db.getFacility(3);
+
+                if (cursor.moveToFirst()) {
+                    Facility facility = new Facility(3, cursor.getString(1),
+                            cursor.getString(2), cursor.getString(3),
+                            cursor.getString(4));
+
+                    currentIntent.putExtra("facilityObject", facility);
+                    // Fragment 1
+                    Fragment fragment = new FacilityFragment();
+                    loadFragment(fragment);
+                }
+            }
+        });
+
+        // handle clicks for facilities buttons
+        btnSwimming.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create badminton object
+                Cursor cursor = db.getFacility(4);
+
+                if (cursor.moveToFirst()) {
+                    Facility facility = new Facility(4, cursor.getString(1),
                             cursor.getString(2), cursor.getString(3),
                             cursor.getString(4));
 
