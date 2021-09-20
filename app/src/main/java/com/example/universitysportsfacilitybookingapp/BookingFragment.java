@@ -1,6 +1,8 @@
 package com.example.universitysportsfacilitybookingapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.Toolbar;
@@ -9,12 +11,16 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,6 +75,11 @@ public class BookingFragment extends Fragment {
     Intent currentIntent;
     String selectedDate;
     Facility facility;
+    EditText username;
+    EditText venue;
+    EditText date;
+    String timeText = "";
+    Button btnBookNow;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -86,6 +97,11 @@ public class BookingFragment extends Fragment {
         CheckBox slot2 = (CheckBox) view.findViewById(R.id.slot2);
         CheckBox slot3 = (CheckBox) view.findViewById(R.id.slot3);
         CheckBox slot4 = (CheckBox) view.findViewById(R.id.slot4);;
+        username = (EditText) view.findViewById(R.id.et_student_id);
+        venue = (EditText) view.findViewById(R.id.et_venue);
+        date = (EditText) view.findViewById(R.id.et_date);
+        btnBookNow = (Button) view.findViewById(R.id.btnBookNow);
+        ArrayList<CheckBox> checkBoxArr = new ArrayList<>();
 
         // set toolbar
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
@@ -95,38 +111,48 @@ public class BookingFragment extends Fragment {
                 getActivity().onBackPressed();
             }
         });
+        // add all checkbox to array
+        checkBoxArr.add(slot1);
+        checkBoxArr.add(slot2);
+        checkBoxArr.add(slot3);
+        checkBoxArr.add(slot4);
 
 
-        //set fragment title
+        //pre-set details
         fragmentTitle.setText("Booking for " + facility.getFacilityName());
+        username.setText(currentIntent.getStringExtra("username"));
+        venue.setText(facility.getFacilityAddress());
+        date.setText(currentIntent.getStringExtra("selectedDate"));
 
 
-        // slot checkbox handlers
-        slot1.setOnClickListener(new View.OnClickListener() {
+        btnBookNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CheckBox cb = (CheckBox)v;
-                if (cb.isChecked()) {
-                    Toast.makeText(getActivity(), "SLOT 1 CHECKED",Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getActivity(), "SLOT 1 UNCHECKED",Toast.LENGTH_SHORT).show();
+                // check for checked slots
+                for(int i=0; i<checkBoxArr.size(); i++) {
+                    CheckBox cb = (CheckBox) checkBoxArr.get(i);
+                    if (cb.isChecked()) {
+                        String slot = "slot" + String.valueOf(i+1);
+                        if (i == 0) {
+                            timeText += getStringByIdName(getActivity(), slot);
+                        } else if (i > 0) {
+                            timeText += ", " + getStringByIdName(getActivity(), slot);
+                        }
+                    }
                 }
-            }
-        });
 
-        slot2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CheckBox cb = (CheckBox)v;
-                if (cb.isChecked()) {
-                    Toast.makeText(getActivity(), "SLOT 2 CHECKED",Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getActivity(), "SLOT 2 UNCHECKED",Toast.LENGTH_SHORT).show();
-                }
+                timeText.trim();
+
+                Toast.makeText(getActivity(), timeText, Toast.LENGTH_SHORT).show();
             }
         });
 
 
         return view;
+    }
+
+    public static String getStringByIdName(Context context, String idName) {
+        Resources res = context.getResources();
+        return res.getString(res.getIdentifier(idName, "string", context.getPackageName()));
     }
 }

@@ -172,6 +172,7 @@ public class FacilityFragment extends Fragment {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.UK);
 
         // pass booking information to next fragment
+        currentIntent.putExtra("username", currentIntent.getStringExtra("username"));
         currentIntent.putExtra("facilityObject", facility);
         currentIntent.putExtra("selectedDate", sdf.format(myCalendar.getTime()));
 

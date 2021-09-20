@@ -12,9 +12,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText et_cust_username, et_cust_password;
-    Button btn_cust_login;
-    TextView tv_cust_register;
+    EditText stud_id, stud_password;
+    Button btn_login;
+    TextView link_register;
     DatabaseHelper db;
 
     @Override
@@ -28,10 +28,10 @@ public class LoginActivity extends AppCompatActivity {
         actionBar.hide();
 
         db = new DatabaseHelper(this);
-        et_cust_username = findViewById(R.id.et_cust_username);
-        et_cust_password = findViewById(R.id.et_cust_password);
-        btn_cust_login = findViewById(R.id.btn_cust_login);
-        tv_cust_register = findViewById(R.id.tv_cust_register);
+        stud_id = findViewById(R.id.stud_id);
+        stud_password = findViewById(R.id.password);
+        btn_login = findViewById(R.id.btn_login);
+        link_register = findViewById(R.id.link_register);
 
 
         // create admin if there isn't one since login page is the first to initiate
@@ -41,12 +41,12 @@ public class LoginActivity extends AppCompatActivity {
             db.addUser("admin@mail.com", "admin", "123");
         }
 
-        btn_cust_login.setOnClickListener(new View.OnClickListener() {
+        btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String username = et_cust_username.getText().toString().trim();
-                String password = et_cust_password.getText().toString().trim();
+                String username = stud_id.getText().toString().trim();
+                String password = stud_password.getText().toString().trim();
 
                 int userId = db.checkUser(username, password);
 
@@ -56,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
 //                    adminIntent.putExtra("USERNAME", username);
 //                    adminIntent.putExtra("PASSWORD", password);
 //                    adminIntent.putExtra("ID", userId);
+                    testIntent.putExtra("username", username);
                     startActivity(testIntent);
 //                    finish();
 //                    return;
