@@ -56,7 +56,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COL_NAME + " TEXT, " +
                 COL_ADDRESS + " TEXT, " +
                 COL_OPENING_HOURS + " TEXT, " +
-                COL_MAX_PAX + " TEXT, " +
                 COL_CONTACT + " TEXT " +
                 ")");
 
@@ -72,10 +71,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 ")");
 
         // insert into tables
+        //user
+        db.execSQL("INSERT INTO " + TABLE_USERS + "( " +
+                COL_EMAIL + ", " + COL_USERNAME + ", " + COL_PASSWORD +
+                ") VALUES ('1171302056@student.mmu.edu.my', '1171302056', '123')");
+
+        db.execSQL("INSERT INTO " + TABLE_USERS + "( " +
+                COL_EMAIL + ", " + COL_USERNAME + ", " + COL_PASSWORD +
+                ") VALUES ('1171302099@student.mmu.edu.my', '1171302099', '123')");
+
+        //facilities
         db.execSQL("INSERT INTO " + TABLE_FACILITIES + "( " +
                 COL_NAME + ", " + COL_ADDRESS + ", " + COL_OPENING_HOURS + ", " +
-                COL_MAX_PAX + ", " + COL_CONTACT +
-                ") VALUES ('Badminton', 'B-G-2', '10.00AM-10.00PM', '4', '+60189686773')");
+                COL_CONTACT +
+                ") VALUES ('Badminton', 'B-G-2', '10.00AM-10.00PM', '+60189686773')");
+
+        //bookings
+        db.execSQL("INSERT INTO " + TABLE_BOOKINGS + "( " +
+                COL_USER_ID + ", " + COL_FACILITY_ID + ", " + COL_DATE + ", " +
+                COL_TIME + ", " + COL_PAX + ", " + COL_STATUS +
+                ") VALUES ('1', '1', '23/09/2021', '10AM - 11AM', '4', 'Booked')");
+
+        db.execSQL("INSERT INTO " + TABLE_BOOKINGS + "( " +
+                COL_USER_ID + ", " + COL_FACILITY_ID + ", " + COL_DATE + ", " +
+                COL_TIME + ", " + COL_PAX + ", " + COL_STATUS +
+                ") VALUES ('1', '1', '23/09/2021', '11AM - 12PM', '4', 'Booked')");
+
     }
 
     @Override
@@ -141,10 +162,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // facility
     public Cursor getFacility(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns = { COL_ID, COL_NAME, COL_ADDRESS, COL_OPENING_HOURS, COL_MAX_PAX, COL_CONTACT };
+        String[] columns = { COL_ID, COL_NAME, COL_ADDRESS, COL_OPENING_HOURS, COL_CONTACT };
         String selection = COL_ID + "=" + id;
 
         Cursor cursor = db.query(TABLE_FACILITIES, columns, selection, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+
+    }
+
+    // booking
+    public Cursor getBookings() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = { COL_ID, COL_USER_ID, COL_FACILITY_ID, COL_DATE, COL_TIME, COL_PAX, COL_STATUS };
+//        String selection = COL_ID + "=" + id;
+
+        Cursor cursor = db.query(TABLE_BOOKINGS, columns, null, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
         }

@@ -76,10 +76,8 @@ public class FacilityFragment extends Fragment {
     TextView fragmentTitle;
     TextView facilityAddress;
     TextView facilityOpeningHours;
-    TextView facilityMaxPax;
     TextView facilityContact;
     FloatingActionButton fab;
-    TextView facilityBookingDate;
     final Calendar myCalendar = Calendar.getInstance();
 
     @Override
@@ -94,7 +92,6 @@ public class FacilityFragment extends Fragment {
         fragmentTitle = (TextView) view.findViewById(R.id.fragmentTitle);
         facilityAddress = (TextView) view.findViewById(R.id.facilityAddress);
         facilityOpeningHours = (TextView) view.findViewById(R.id.facilityOpeningHours);
-        facilityMaxPax = (TextView) view.findViewById(R.id.facilityMaxPax);
         facilityContact = (TextView) view.findViewById(R.id.facilityContact);
         fab = (FloatingActionButton) view.findViewById(R.id.fab);
 
@@ -128,7 +125,6 @@ public class FacilityFragment extends Fragment {
         fragmentTitle.setText(facility.getFacilityName());
         facilityAddress.setText(facility.getFacilityAddress());
         facilityOpeningHours.setText(facility.getFacilityOpeningHours());
-        facilityMaxPax.setText(facility.getFacilityMaxPax() + " Pax");
         facilityContact.setText(facility.getFacilityContact());
 
         // fab action
@@ -172,8 +168,6 @@ public class FacilityFragment extends Fragment {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.UK);
 
         // pass booking information to next fragment
-        currentIntent.putExtra("username", currentIntent.getStringExtra("username"));
-        currentIntent.putExtra("facilityObject", facility);
         currentIntent.putExtra("selectedDate", sdf.format(myCalendar.getTime()));
 
         Fragment fragment = new BookingFragment();

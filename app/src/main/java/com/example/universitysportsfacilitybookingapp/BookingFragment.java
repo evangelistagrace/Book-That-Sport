@@ -3,6 +3,7 @@ package com.example.universitysportsfacilitybookingapp;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.Toolbar;
@@ -21,6 +22,8 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -78,8 +81,9 @@ public class BookingFragment extends Fragment {
     EditText username;
     EditText venue;
     EditText date;
-    String timeText = "";
     Button btnBookNow;
+    DatabaseHelper db;
+    int userID;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -102,6 +106,8 @@ public class BookingFragment extends Fragment {
         date = (EditText) view.findViewById(R.id.et_date);
         btnBookNow = (Button) view.findViewById(R.id.btnBookNow);
         ArrayList<CheckBox> checkBoxArr = new ArrayList<>();
+        db = new DatabaseHelper(getActivity());
+        userID = currentIntent.getIntExtra("userID", 1);
 
         // set toolbar
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
@@ -124,24 +130,54 @@ public class BookingFragment extends Fragment {
         venue.setText(facility.getFacilityAddress());
         date.setText(currentIntent.getStringExtra("selectedDate"));
 
+        // check slot availability
+        Cursor cursor = db.getBookings();
+
+        if (cursor.moveToFirst()) {
+            do {
+                // get slots for the booking date
+                if (cursor.getString(3).equals(selectedDate)) {
+                    String time = cursor.getString(4);
+                    List<String> slotList = new ArrayList<String>(Arrays.asList(time.split(", ")));
+
+                    for (int i=0; i<slotList.size(); i++) {
+                        for(int j=0; j<checkBoxArr.size(); j++) {
+                            CheckBox cb = (CheckBox) checkBoxArr.get(j);
+                            if (cursor.getInt(2) == facility.getId() ) {
+                                if (cb.getText().equals(slotList.get(i))) {
+                                    if (cursor.getInt(1) == userID) {
+                                        cb.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_slot_own_booking_36),null,null);
+                                    } else {
+                                        cb.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(R.drawable.ic_slot_unavailable_36),null,null);
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+
+
+                }
+
+            } while (cursor.moveToNext());
+        }
+
 
         btnBookNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String timeText = "";
                 // check for checked slots
                 for(int i=0; i<checkBoxArr.size(); i++) {
                     CheckBox cb = (CheckBox) checkBoxArr.get(i);
                     if (cb.isChecked()) {
                         String slot = "slot" + String.valueOf(i+1);
-                        if (i == 0) {
-                            timeText += getStringByIdName(getActivity(), slot);
-                        } else if (i > 0) {
-                            timeText += ", " + getStringByIdName(getActivity(), slot);
-                        }
+                        timeText += getStringByIdName(getActivity(), slot) + ", ";
                     }
                 }
 
-                timeText.trim();
+                // remove trailing comma and whitespace
+                timeText = timeText.replaceAll(", $", "");
 
                 Toast.makeText(getActivity(), timeText, Toast.LENGTH_SHORT).show();
             }

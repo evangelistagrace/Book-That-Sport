@@ -3,7 +3,7 @@
 
     <item
         android:state_checked="true"
-        android:drawable="@drawable/ic_slot_unavailable_36"
+        android:drawable="@drawable/ic_slot_booking_36"
     />
     <item
         android:state_checked="false"

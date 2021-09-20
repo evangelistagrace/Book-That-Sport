@@ -13,18 +13,19 @@ public class Facility implements Serializable {
    String name;
    String address;
    String opening_hours;
-   int max_pax;
    String contact;
 
-    Facility(int id, String name, String address, String opening_hours, int max_pax, String contact) {
+    Facility(int id, String name, String address, String opening_hours, String contact) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.opening_hours = opening_hours;
-        this.max_pax = max_pax;
         this.contact = contact;
     }
 
+    public int getId() {
+        return id;
+    }
     public String getFacilityName() {
         return this.name;
     }
@@ -33,9 +34,6 @@ public class Facility implements Serializable {
     }
     public String getFacilityOpeningHours() {
         return this.opening_hours;
-    }
-    public String getFacilityMaxPax() {
-        return String.valueOf(this.max_pax);
     }
     public String getFacilityContact() {
         return this.contact;

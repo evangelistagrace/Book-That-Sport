@@ -45,9 +45,8 @@ public class FacilitiesActivity extends AppCompatActivity {
                 if (cursor.moveToFirst()) {
                     Facility facility = new Facility(1, cursor.getString(1),
                             cursor.getString(2), cursor.getString(3),
-                            cursor.getInt(4), cursor.getString(5));
+                            cursor.getString(4));
 
-                    currentIntent.putExtra("username", currentIntent.getStringExtra("username"));
                     currentIntent.putExtra("facilityObject", facility);
                     // Fragment 1
                     Fragment fragment = new FacilityFragment();

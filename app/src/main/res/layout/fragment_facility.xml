@@ -83,18 +83,6 @@
                 app:layout_constraintTop_toBottomOf="@id/facilityAddress" />
 
             <TextView
-                android:id="@+id/facilityMaxPax"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:drawableStart="@drawable/ic_pax_dark"
-                android:drawableLeft="@drawable/ic_pax_dark"
-                android:drawablePadding="5dip"
-                android:text="@string/hello_blank_fragment"
-                android:textColor="@color/magenta"
-                app:layout_constraintTop_toBottomOf="@id/facilityOpeningHours" />
-
-            <TextView
                 android:id="@+id/facilityContact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -104,7 +92,7 @@
                 android:drawablePadding="5dip"
                 android:text="@string/hello_blank_fragment"
                 android:textColor="@color/magenta"
-                app:layout_constraintTop_toBottomOf="@id/facilityMaxPax" />
+                app:layout_constraintTop_toBottomOf="@id/facilityAddress" />
 
         </TableLayout>
     </ScrollView>
