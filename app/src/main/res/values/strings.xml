@@ -46,4 +46,6 @@
     <string name="time">Time</string>
     <string name="pax">Number of Pax</string>
     <string name="student_id">Student ID</string>
+    <string name="bookings">Bookings</string>
+    <string name="noBookings">No bookings yet</string>
 </resources>

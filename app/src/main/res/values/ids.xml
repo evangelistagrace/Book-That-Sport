@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="frame_container" type="id" />
+    <item name="card" type="id" />
+    <item name="tvTicketNumber" type="id" />
 </resources>

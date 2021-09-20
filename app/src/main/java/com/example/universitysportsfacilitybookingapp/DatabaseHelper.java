@@ -170,20 +170,41 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
         }
         return cursor;
+    }
 
+    public Cursor getFacilityName(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = { COL_ID, COL_NAME, COL_ADDRESS, COL_OPENING_HOURS, COL_CONTACT };
+        String selection = COL_ID + "=" + id;
+
+        Cursor cursor = db.query(TABLE_FACILITIES, columns, selection, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
     }
 
     // booking
     public Cursor getBookings() {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = { COL_ID, COL_USER_ID, COL_FACILITY_ID, COL_DATE, COL_TIME, COL_PAX, COL_STATUS };
-//        String selection = COL_ID + "=" + id;
 
         Cursor cursor = db.query(TABLE_BOOKINGS, columns, null, null, null, null, null);
         if (cursor != null) {
             cursor.moveToFirst();
         }
         return cursor;
+    }
 
+    public Cursor getBookings(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = { COL_ID, COL_USER_ID, COL_FACILITY_ID, COL_DATE, COL_TIME, COL_PAX, COL_STATUS };
+        String selection = COL_USER_ID + "=" + id;
+
+        Cursor cursor = db.query(TABLE_BOOKINGS, columns, selection, null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
     }
 }

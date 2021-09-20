@@ -65,10 +65,10 @@ public class FacilitiesActivity extends AppCompatActivity {
                         getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
                         return true;
                     case R.id.action_bookings:
-//                        currentIntent.putExtra("adminObject", admin);
-//                        fragment = new AdminInsightFragment();
-//                        loadFragment(fragment);
-//                        return true;
+//                        // Fragment 3
+                        fragment = new BookingsFragment();
+                        loadFragment(fragment);
+                        return true;
                     case R.id.action_profile:
 //                        currentIntent.putExtra("adminObject", admin);
 //                        fragment = new AdminProfileFragment();

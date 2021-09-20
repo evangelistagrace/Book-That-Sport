@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UniversitySportsFacilityBookingApp">
-        <activity android:name=".TestActivity" />
         <activity android:name=".FacilitiesActivity" />
         <activity android:name=".LoginActivity">
             <intent-filter>

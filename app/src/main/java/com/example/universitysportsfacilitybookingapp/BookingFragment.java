@@ -180,6 +180,9 @@ public class BookingFragment extends Fragment {
                 timeText = timeText.replaceAll(", $", "");
 
                 Toast.makeText(getActivity(), timeText, Toast.LENGTH_SHORT).show();
+
+                // save booking details
+                //to-do: convert pax value to string before saving to db
             }
         });
 
