@@ -34,6 +34,7 @@ public class FacilitiesActivity extends AppCompatActivity {
         Button btnTennis = findViewById(R.id.btnTennis);
         Button btnBasketball = findViewById(R.id.btnBasketball);
         Button btnSwimming = findViewById(R.id.btnSwimming);
+        Button btnFutsal = findViewById(R.id.btnFutsal);
         Intent currentIntent = getIntent();
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -107,6 +108,26 @@ public class FacilitiesActivity extends AppCompatActivity {
 
                 if (cursor.moveToFirst()) {
                     Facility facility = new Facility(4, cursor.getString(1),
+                            cursor.getString(2), cursor.getString(3),
+                            cursor.getString(4));
+
+                    currentIntent.putExtra("facilityObject", facility);
+                    // Fragment 1
+                    Fragment fragment = new FacilityFragment();
+                    loadFragment(fragment);
+                }
+            }
+        });
+
+        // handle clicks for facilities buttons
+        btnFutsal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create badminton object
+                Cursor cursor = db.getFacility(5);
+
+                if (cursor.moveToFirst()) {
+                    Facility facility = new Facility(5, cursor.getString(1),
                             cursor.getString(2), cursor.getString(3),
                             cursor.getString(4));
 

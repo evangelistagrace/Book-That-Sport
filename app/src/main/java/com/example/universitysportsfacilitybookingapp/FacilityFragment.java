@@ -123,6 +123,9 @@ public class FacilityFragment extends Fragment {
             case "Swimming":
                 mImageIds = new int[]{R.drawable.swimming_1, R.drawable.swimming_2};
                 break;
+            case "Futsal":
+                mImageIds = new int[]{R.drawable.futsal_1, R.drawable.futsal_2};
+                break;
             default:
                 break;
         }
