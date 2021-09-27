@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class LoginActivity extends AppCompatActivity {
     EditText stud_id, stud_password;
     Button btn_login;
-    TextView link_register;
     DatabaseHelper db;
 
     @Override
@@ -31,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
         stud_id = findViewById(R.id.stud_id);
         stud_password = findViewById(R.id.password);
         btn_login = findViewById(R.id.btn_login);
-        link_register = findViewById(R.id.link_register);
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,9 +50,6 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
                 }
-
-
-
             }
         });
 

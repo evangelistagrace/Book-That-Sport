@@ -125,35 +125,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_cust_password_layout" />
 
-    <TextView
-        android:id="@+id/tv_cust_text1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="106dp"
-        android:layout_marginLeft="106dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="182dp"
-        android:layout_marginRight="182dp"
-        android:fontFamily="@font/kollektif"
-        android:text="@string/not_registered_yet"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_cust_text1"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="106dp"-->
+<!--        android:layout_marginLeft="106dp"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:layout_marginEnd="182dp"-->
+<!--        android:layout_marginRight="182dp"-->
+<!--        android:fontFamily="@font/kollektif"-->
+<!--        android:text="@string/not_registered_yet"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="16sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/btn_login" />-->
 
-    <TextView
-        android:id="@+id/link_register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:fontFamily="@font/kollektif"
-        android:text="@string/register_now"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tv_cust_text1"
-        app:layout_constraintTop_toTopOf="@+id/tv_cust_text1" />
+<!--    <TextView-->
+<!--        android:id="@+id/link_register"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="5dp"-->
+<!--        android:layout_marginLeft="5dp"-->
+<!--        android:fontFamily="@font/kollektif"-->
+<!--        android:text="@string/register_now"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="15sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tv_cust_text1"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/tv_cust_text1" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

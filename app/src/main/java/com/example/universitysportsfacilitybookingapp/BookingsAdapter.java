@@ -39,11 +39,13 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         String facilityName = String.valueOf(mData.get(position).getFacilityName());
         String facilityAddress = mData.get(position).getFacilityAddress();
+        String date = mData.get(position).getDate();
         String time = mData.get(position).getTime();
         String pax = mData.get(position).getPax();
 
         holder.tvFacilityName.setText(facilityName);
         holder.tvAddress.setText(facilityAddress);
+        holder.tvDate.setText(date);
         holder.tvTime.setText(time);
         holder.tvPax.setText(pax + " pax");
     }
@@ -56,11 +58,12 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.ViewHo
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView tvFacilityName, tvTime, tvAddress, tvPax;
+        TextView tvFacilityName, tvDate, tvTime, tvAddress, tvPax;
 
         ViewHolder(View itemView) {
             super(itemView);
             tvFacilityName = itemView.findViewById(R.id.tvFacilityName);
+            tvDate = itemView.findViewById(R.id.tvDate);
             tvTime = itemView.findViewById(R.id.tvTime);
             tvAddress = itemView.findViewById(R.id.tvAddress);
             tvPax = itemView.findViewById(R.id.tvPax);
